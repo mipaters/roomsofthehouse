@@ -90,6 +90,24 @@
     .architecture-button:hover { border-color: rgba(115,201,229,.62); background: rgba(115,201,229,.12); }
 
     .house-wrap { padding: 14px 0 30px; }
+    .telco-scene { display: grid; grid-template-columns: 190px minmax(0, 1fr); column-gap: 22px; }
+    .customer-experience { display: flex; flex-direction: column; grid-column: 1; grid-row: 2; align-self: end; text-align: center; }
+    .customer-visual {
+      display: flex; flex-direction: column; align-items: center; width: 100%; padding: 18px 12px 0;
+      border: 1px solid rgba(115,201,229,.3); border-radius: 22px; color: var(--ink);
+      background: radial-gradient(ellipse at 50% 35%, rgba(115,201,229,.13), transparent 75%);
+      cursor: pointer; transition: background .18s ease, border-color .18s ease;
+    }
+    .customer-visual:hover { background-color: rgba(115,201,229,.06); border-color: var(--cyan); }
+    .customer-visual svg { order: 1; width: 134px; height: auto; margin: 13px 0 0; }
+    .customer-visual .eyebrow { color: var(--cyan); font-size: 9px; }
+    .customer-title { font-size: 16px; font-weight: 720; }
+    .customer-action { margin-top: 9px; color: var(--cyan); font-size: 11px; }
+    .customer-experience p { order: -1; margin: 0 5px 13px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .house-building { display: contents; }
+    .house-building > .house-roof { grid-column: 2; grid-row: 1; width: 100%; }
+    .house-building > .house-structure { grid-column: 2; grid-row: 2; width: 100%; min-width: 0; }
+    .house-building > .foundation { grid-column: 2; grid-row: 3; width: 100%; }
     .house-caption {
       display: flex; align-items: center; justify-content: space-between; gap: 12px;
       max-width: 1040px; margin: 0 auto 14px; color: var(--faint);
@@ -304,6 +322,14 @@
       font-size: 11px; line-height: 1.6;
     }
 
+    @media (max-width: 1000px) {
+      .telco-scene { grid-template-columns: 1fr; gap: 24px; }
+      .customer-experience { grid-column: auto; grid-row: auto; width: min(100%, 360px); margin: 0 auto; }
+      .house-building { display: block; min-width: 0; }
+      .customer-visual { display: grid; grid-template-columns: 82px 1fr; column-gap: 13px; padding-bottom: 18px; text-align: left; }
+      .customer-visual svg { grid-column: 1; grid-row: 1 / 4; width: 82px; height: 116px; margin: 0; }
+      .customer-visual .eyebrow, .customer-title, .customer-action { grid-column: 2; }
+    }
     @media (max-width: 780px) {
       .room-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .room-card { min-height: 124px; }
@@ -369,6 +395,27 @@
     <section class="house-wrap" aria-label="Interactive telco house">
       <div class="house-caption"><span class="caption-line"></span><span>Leadership above · operating teams within · trust beneath</span><span class="caption-line"></span></div>
 
+      <div class="telco-scene">
+      <aside class="customer-experience" aria-label="Customer experience outside the house">
+        <button class="customer-visual" id="open-customer-experience" type="button" aria-haspopup="dialog" aria-controls="customer-dialog" aria-label="Customer experience: open Rogers and Spectrum demos">
+          <span class="eyebrow">Outside the house</span>
+          <svg viewBox="0 0 140 184" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="67" cy="37" r="23" fill="#edc781"/>
+            <path d="M44 36C40 7 89 7 90 35L77 28L62 29L46 40Z" fill="#3c4658"/>
+            <path d="M47 61Q65 54 82 62L92 119H37L42 76Z" fill="#73c9e5"/>
+            <path d="M46 116L42 174M78 116L88 174" stroke="#94aab6" stroke-width="17" stroke-linecap="round"/>
+            <path d="M41 177H28M89 177H103" stroke="#dce9e9" stroke-width="12" stroke-linecap="round"/>
+            <path d="M46 73L35 99L73 91M81 72L95 91L104 72" stroke="#edc781" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="96" y="47" width="21" height="35" rx="5" transform="rotate(12 96 47)" fill="#102330" stroke="#72e0c0" stroke-width="2"/>
+            <path d="M100 56L109 58M99 62L107 64" stroke="#72e0c0" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="104" cy="73" r="1.5" fill="#72e0c0"/>
+          </svg>
+          <span class="customer-title">Customer experience</span>
+          <span class="customer-action">2 demos · Explore experiences ↗</span>
+        </button>
+        <p>The customer's view of the telco—connected, assisted, and on their terms.</p>
+      </aside>
+      <div class="house-building">
       <div class="house-roof" aria-hidden="true"><span class="house-roof-cap"></span></div>
       <div class="house-structure">
       <section class="boardroom" aria-labelledby="boardroom-title">
@@ -402,6 +449,8 @@
         </div>
         <span class="foundation-tag">Governance · Security · Control</span>
       </section>
+      </div>
+      </div>
 
       <div class="legend" aria-label="House diagram legend">
         <span><i class="legend-board"></i> Executive strategy</span>
@@ -427,6 +476,20 @@
       <section class="dialog-section" aria-labelledby="challenge-heading"><h3 id="challenge-heading">Top challenges</h3><div class="chip-list" id="challenge-list"></div></section>
       <section class="dialog-section" aria-labelledby="outcome-heading"><h3 id="outcome-heading">Desired business outcomes</h3><div class="chip-list" id="outcome-list"></div></section>
       <section class="dialog-section" aria-labelledby="demo-heading"><h3 id="demo-heading">Explore the demos</h3><div class="demo-list" id="demo-list"></div></section>
+    </div>
+  </dialog>
+
+  <dialog id="customer-dialog" aria-labelledby="customer-dialog-title">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <div><div class="dialog-kicker">Outside the house · 2 demos</div><h2 id="customer-dialog-title">Customer experience</h2></div>
+        <button class="close-button" type="button" data-close aria-label="Close customer experience">×</button>
+      </div>
+      <p class="dialog-intro">See the telco from the customer's perspective. Explore these two customer-facing experiences, each opening in the current preview.</p>
+      <div class="demo-list">
+        <a class="demo-link" href="https://jolly-ground-0aeb4d20f.1.azurestaticapps.net" target="_self"><span><strong>Rogers Website AI Assistant</strong><small>Explore the Rogers customer experience demo.</small></span><span class="outbound" aria-hidden="true">↗</span></a>
+        <a class="demo-link" href="https://jolly-bay-08ec5010f.6.azurestaticapps.net" target="_self"><span><strong>Spectrum Website AI Assistant</strong><small>Explore the Spectrum customer experience demo.</small></span><span class="outbound" aria-hidden="true">↗</span></a>
+      </div>
     </div>
   </dialog>
 
@@ -599,6 +662,7 @@
     const roomDialog = document.querySelector("#room-dialog");
     const walkthroughDialog = document.querySelector("#walkthrough-dialog");
     const architectureDialog = document.querySelector("#architecture-dialog");
+    const customerDialog = document.querySelector("#customer-dialog");
     const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[character]);
@@ -634,13 +698,14 @@
 
     document.querySelector("#open-walkthrough").addEventListener("click", () => walkthroughDialog.showModal());
     document.querySelector("#open-architecture").addEventListener("click", () => architectureDialog.showModal());
+    document.querySelector("#open-customer-experience").addEventListener("click", () => customerDialog.showModal());
     document.querySelector("#walkthrough-explore").addEventListener("click", () => {
       walkthroughDialog.close();
       document.querySelector("#rooms").scrollIntoView({ behavior: "smooth", block: "center" });
       roomGrid.querySelector("button").focus({ preventScroll: true });
     });
     document.querySelectorAll("[data-close]").forEach(button => button.addEventListener("click", () => button.closest("dialog").close()));
-    [roomDialog, walkthroughDialog, architectureDialog].forEach(dialog => {
+    [roomDialog, walkthroughDialog, architectureDialog, customerDialog].forEach(dialog => {
       dialog.addEventListener("click", event => {
         if (event.target === dialog) dialog.close();
       });
