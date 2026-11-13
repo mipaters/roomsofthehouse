@@ -218,10 +218,13 @@
       max-width: 1000px; margin: 0 auto; padding: 21px 24px;
       border: 1px solid rgba(193,177,243,.26); border-top: 0;
       border-radius: 0 0 18px 18px;
+      color: inherit; text-decoration: none;
       background:
         repeating-linear-gradient(135deg, rgba(193,177,243,.035) 0 1px, transparent 1px 11px),
         linear-gradient(110deg, #201e35, #151d31 78%);
+      transition: border-color .18s ease, filter .18s ease;
     }
+    .foundation:hover { border-color: rgba(193,177,243,.65); filter: brightness(1.12); }
     .foundation-copy { display: flex; align-items: center; gap: 15px; }
     .foundation-icon {
       display: grid; width: 42px; height: 42px; place-items: center; flex: 0 0 auto;
@@ -442,16 +445,16 @@
       </section>
       </div>
 
-      <section class="foundation" aria-labelledby="foundation-title">
+      <a class="foundation" href="https://wonderful-island-03723a60f.4.azurestaticapps.net/" target="_self" aria-labelledby="foundation-title">
         <div class="foundation-copy">
           <span class="foundation-icon" aria-hidden="true">⬡</span>
           <div>
-            <h2 id="foundation-title">Agent 365 · the foundation</h2>
+            <h2 id="foundation-title">Agentic Governance · the foundation ↗</h2>
             <p>A shared control plane to register, manage, and govern agents across the house—with the identity, security, and oversight needed to use them responsibly at scale.</p>
           </div>
         </div>
         <span class="foundation-tag">Governance · Security · Control</span>
-      </section>
+      </a>
       </div>
       </div>
 
@@ -511,7 +514,7 @@
         <article class="walk-card"><span class="walk-icon" aria-hidden="true">◎</span><h3>1 · The purpose</h3><p>Make agentic AI tangible across the telco. Each room connects a real business function to the people, challenges, outcomes, and demos that matter there.</p></article>
         <article class="walk-card"><span class="walk-icon" aria-hidden="true">⌂</span><h3>2 · How to use the house</h3><p>Begin in the Executive Copilot boardroom, then select any room. Review the personas and priorities before opening a linked, working demo in the preview.</p></article>
         <article class="walk-card"><span class="walk-icon" aria-hidden="true">✦</span><h3>3 · What the solutions mean</h3><p>Agents assist with focused work—insight, recommendations, and action—so people can resolve issues faster, serve customers better, and make decisions with more confidence.</p></article>
-        <article class="walk-card"><span class="walk-icon" aria-hidden="true">⬡</span><h3>4 · Why the foundation matters</h3><p>Agent 365 sits beneath every room. It represents the shared management, governance, and security needed to identify and oversee agents as adoption grows.</p></article>
+        <article class="walk-card"><span class="walk-icon" aria-hidden="true">⬡</span><h3>4 · Why the foundation matters</h3><p>Agentic Governance sits beneath every room. Open the foundation to explore the demo and how shared management, governance, and security—including Agent 365—help oversee agents as adoption grows.</p></article>
       </div>
       <div class="walk-footer"><span>Recommended flow: boardroom → rooms → foundation</span><button class="button button-primary button-small" id="walkthrough-explore" type="button">Explore the rooms <span aria-hidden="true">↓</span></button></div>
     </div>
